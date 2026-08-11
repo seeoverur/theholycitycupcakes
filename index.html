@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charleston Bakery Guide | The City's Best Cinnamon Rolls, Muffins &amp; Pastries</title>
+<meta name="description" content="A local's guide to the best bakeries in Charleston, SC — from Welton's Tiny Bakeshop to Sweet Palm Coffee & Food's famous cinnamon rolls and blueberry muffins.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root{
+    --cream:#FBF3E3;
+    --cream-deep:#F5E9D3;
+    --navy:#151C24;
+    --navy-soft:#212B36;
+    --teal:#9FD8CE;
+    --teal-deep:#6FBFB0;
+    --ink:#2B241C;
+    --gold:#C7A048;
+    --line: rgba(43,36,28,.12);
+  }
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Jost', sans-serif;
+    color:var(--ink);
+    background:#fff;
+    font-weight:400;
+  }
+
+  h1,h2,h3,h4,.display-serif{
+    font-family:'Fraunces', serif;
+    color:var(--navy);
+  }
+
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:.75rem;
+    font-weight:600;
+    color:var(--gold);
+  }
+
+  a{ text-decoration:none; }
+
+  /* ---------- Buttons ---------- */
+  .btn-pill{
+    background:var(--teal);
+    color:var(--navy);
+    border:none;
+    border-radius:50px;
+    padding:.7rem 1.9rem;
+    font-weight:600;
+    letter-spacing:.03em;
+    font-size:.85rem;
+    text-transform:uppercase;
+    transition:all .25s ease;
+    display:inline-block;
+  }
+  .btn-pill:hover{
+    background:var(--teal-deep);
+    color:var(--navy);
+    transform:translateY(-2px);
+  }
+  .btn-outline-pill{
+    border:1.5px solid var(--navy);
+    color:var(--navy);
+    border-radius:50px;
+    padding:.65rem 1.8rem;
+    font-weight:600;
+    font-size:.85rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    background:transparent;
+    transition:all .25s ease;
+    display:inline-block;
+  }
+  .btn-outline-pill:hover{
+    background:var(--navy);
+    color:var(--cream);
+  }
+
+  /* Floating CTA that follows Holy City pattern (bottom-right pill on sections) */
+  .floating-cta{
+    position:fixed;
+    bottom:28px;
+    right:28px;
+    z-index:1040;
+    box-shadow:0 8px 22px rgba(0,0,0,.18);
+  }
+
+  /* ---------- Top utility bar ---------- */
+  .topbar{
+    background:var(--teal);
+    font-size:.82rem;
+    padding:.5rem 0;
+    color:var(--navy);
+    font-weight:500;
+  }
+  .topbar a{ color:var(--navy); }
+
+  /* ---------- Navbar ---------- */
+  .navbar-bakery{
+    background:var(--navy);
+    padding:.9rem 0;
+  }
+  .navbar-bakery .navbar-brand{
+    font-family:'Fraunces', serif;
+    color:var(--cream);
+    font-size:1.4rem;
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+  }
+  .navbar-bakery .navbar-brand .brand-mark{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--teal);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--navy); font-size:1rem;
+  }
+  .navbar-bakery .nav-link{
+    color:rgba(251,243,227,.85) !important;
+    font-size:.85rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    font-weight:500;
+    margin:0 .7rem;
+  }
+  .navbar-bakery .nav-link:hover{ color:var(--teal) !important; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:linear-gradient(180deg, rgba(21,28,36,.72), rgba(21,28,36,.9)), 
+               repeating-linear-gradient(135deg, #1b232c 0 40px, #171f27 40px 80px);
+    color:var(--cream);
+    padding:6.5rem 0 5.5rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .eyebrow{ color:var(--teal); }
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(2.6rem, 5.5vw, 4.2rem);
+    line-height:1.05;
+    font-weight:500;
+  }
+  .hero p.lead{
+    color:rgba(251,243,227,.82);
+    font-size:1.15rem;
+    max-width:520px;
+  }
+  .hero-badges{
+    display:flex; gap:1rem; flex-wrap:wrap; margin-top:2.2rem;
+  }
+  .hero-badge{
+    background:rgba(251,243,227,.06);
+    border:1px solid rgba(251,243,227,.18);
+    border-radius:12px;
+    padding:.9rem 1.1rem;
+    font-size:.82rem;
+    color:rgba(251,243,227,.85);
+    min-width:150px;
+  }
+  .hero-badge strong{
+    display:block; font-family:'Fraunces',serif; color:var(--teal); font-size:1.4rem; font-weight:600;
+  }
+  .hero-visual{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .hero-visual .tile{
+    border-radius:16px;
+    background:linear-gradient(135deg, var(--teal-deep), var(--teal));
+    aspect-ratio:1/1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:var(--navy);
+    font-family:'Fraunces',serif;
+    font-size:.95rem;
+    text-align:center;
+    padding:.5rem;
+  }
+  .hero-visual .tile i{ font-size:1.7rem; margin-bottom:.4rem; }
+  .hero-visual .tile:nth-child(2){ background:linear-gradient(135deg,#EFD9A3,#DFC079); margin-top:2rem;}
+  .hero-visual .tile:nth-child(3){ background:linear-gradient(135deg,#E7B7A4,#D89982); margin-top:-2rem;}
+  .hero-visual .tile:nth-child(4){ background:linear-gradient(135deg,#c7b8f0,#a996e6);}
+
+  /* ---------- Welcome section ---------- */
+  .welcome-section{
+    background:var(--cream);
+    padding:5.5rem 0;
+    text-align:center;
+    position:relative;
+  }
+  .welcome-section h2{
+    font-size:clamp(2rem,4vw,3rem);
+    font-weight:500;
+  }
+  .welcome-section p.lead-text{
+    max-width:680px;
+    margin:1.3rem auto 2.2rem;
+    color:#5b5142;
+    font-size:1.08rem;
+  }
+  .stat-row{
+    display:flex; justify-content:center; gap:3.5rem; flex-wrap:wrap; margin-top:2.5rem;
+  }
+  .stat-item{ text-align:center; }
+  .stat-item strong{
+    display:block; font-family:'Fraunces',serif; font-size:2.1rem; color:var(--navy); font-weight:600;
+  }
+  .stat-item span{ font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:#8a7c63; }
+
+  /* ---------- Section shell ---------- */
+  .section-heading{ text-align:center; margin-bottom:3.2rem; }
+  .section-heading h2{ font-size:clamp(2rem,4vw,2.7rem); font-weight:500; }
+
+  /* ---------- Rank cards (Top picks) ---------- */
+  .top-picks{ background:#fff; padding:6rem 0; }
+  .rank-card{
+    background:var(--cream);
+    border-radius:20px;
+    overflow:hidden;
+    height:100%;
+    transition:transform .3s ease, box-shadow .3s ease;
+    border:1px solid var(--line);
+  }
+  .rank-card:hover{ transform:translateY(-8px); box-shadow:0 18px 34px rgba(21,28,36,.12); }
+  .rank-card .rank-media{
+    height:210px;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    color:var(--navy);
+    font-family:'Fraunces',serif;
+  }
+  .rank-card .rank-number{
+    position:absolute; top:16px; left:16px;
+    background:var(--navy); color:var(--teal);
+    font-family:'Fraunces',serif; font-weight:600;
+    width:46px;height:46px; border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;
+  }
+  .rank-card .rank-body{ padding:1.7rem 1.6rem 2rem; }
+  .rank-card .rank-locale{
+    font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold); font-weight:600;
+  }
+  .rank-card h3{ font-size:1.5rem; margin:.35rem 0 .7rem; font-weight:600; }
+  .rank-card p{ color:#5b5142; font-size:.95rem; margin-bottom:1.1rem; }
+  .rank-card .order-tags{ display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.1rem; }
+  .rank-card .order-tags span{
+    background:#fff; border:1px solid var(--line); border-radius:50px;
+    padding:.28rem .8rem; font-size:.75rem; color:var(--navy); font-weight:500;
+  }
+  .rank-card .rank-link{ font-size:.85rem; font-weight:600; color:var(--navy); border-bottom:1.5px solid var(--teal); padding-bottom:2px;}
+  .rank-card .rank-link:hover{ color:var(--teal-deep); }
+
+  .media-1{ background:linear-gradient(135deg,#e7d2ab,#d1af73); }
+  .media-2{ background:linear-gradient(135deg,#f0c6c0,#e29a92); }
+  .media-3{ background:linear-gradient(135deg,#c9ded9,#9fc9c1); }
+
+  /* ---------- More bakeries ---------- */
+  .more-bakeries{ background:var(--cream-deep); padding:6rem 0; }
+  .more-card{
+    background:#fff; border-radius:18px; padding:2rem 1.7rem;
+    height:100%; border:1px solid var(--line);
+    transition:transform .25s ease;
+  }
+  .more-card:hover{ transform:translateY(-6px); }
+  .more-card .icon-badge{
+    width:54px;height:54px;border-radius:14px;
+    background:var(--navy); color:var(--teal);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem; margin-bottom:1.1rem;
+  }
+  .more-card h4{ font-size:1.22rem; font-weight:600; margin-bottom:.5rem; }
+  .more-card .locale{ font-size:.78rem; color:var(--gold); text-transform:uppercase; letter-spacing:.06em; font-weight:600; margin-bottom:.6rem; }
+  .more-card p{ color:#5b5142; font-size:.92rem; }
+
+  /* ---------- Gallery / Menu highlights ---------- */
+  .gallery-section{ background:#fff; padding:6rem 0; }
+  .taste-tile{
+    border-radius:16px;
+    aspect-ratio:4/5;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color:var(--navy);
+    font-family:'Fraunces',serif;
+    text-align:center;
+    padding:1rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .taste-tile i{ font-size:2rem; margin-bottom:.6rem; }
+  .taste-tile span.label{ font-size:1.05rem; font-weight:600; }
+  .taste-tile small{ font-family:'Jost',sans-serif; font-size:.72rem; opacity:.75; margin-top:.2rem;}
+  .t1{ background:linear-gradient(160deg,#e9c48f,#d69b58); }
+  .t2{ background:linear-gradient(160deg,#a9c9e0,#7ba7c9); }
+  .t3{ background:linear-gradient(160deg,#e3b7b1,#cf897f); }
+  .t4{ background:linear-gradient(160deg,#bcd9c9,#8fbfa8); }
+  .t5{ background:linear-gradient(160deg,#d8c3e6,#b593c9); }
+
+  /* ---------- Insider tips (replaces testimonials) ---------- */
+  .tips-section{
+    background:var(--navy);
+    color:var(--cream);
+    padding:6rem 0;
+    background-image: radial-gradient(circle at 15% 20%, rgba(159,216,206,.08), transparent 40%), radial-gradient(circle at 85% 80%, rgba(199,160,72,.08), transparent 45%);
+  }
+  .tips-section .eyebrow{ color:var(--teal); }
+  .tips-section h2{ color:var(--cream); }
+  .tip-card{
+    background:rgba(251,243,227,.05);
+    border:1px solid rgba(251,243,227,.14);
+    border-radius:18px;
+    padding:2rem 1.8rem;
+    height:100%;
+  }
+  .tip-card i.fa-quote-left{ color:var(--teal); font-size:1.4rem; opacity:.6; margin-bottom:.9rem; display:block; }
+  .tip-card h5{ font-family:'Fraunces',serif; color:var(--teal); font-size:1.05rem; margin-bottom:.6rem; font-weight:600;}
+  .tip-card p{ color:rgba(251,243,227,.8); font-size:.94rem; margin:0; }
+
+  /* ---------- Newsletter ---------- */
+  .newsletter-section{
+    background:linear-gradient(135deg, var(--cream-deep), var(--cream));
+    padding:6rem 0;
+  }
+  .newsletter-section h2{ font-size:clamp(2.2rem,5vw,3.4rem); font-weight:500; }
+  .newsletter-form{ max-width:440px; }
+  .newsletter-form .form-control{
+    border-radius:50px 0 0 50px;
+    padding:.85rem 1.3rem;
+    border:1.5px solid var(--navy);
+    border-right:none;
+  }
+  .newsletter-form .btn{
+    border-radius:0 50px 50px 0;
+    background:var(--navy);
+    color:var(--cream);
+    padding:0 1.6rem;
+    font-weight:600;
+    font-size:.85rem;
+    text-transform:uppercase;
+    border:1.5px solid var(--navy);
+  }
+  .newsletter-form .btn:hover{ background:var(--teal-deep); border-color:var(--teal-deep); color:var(--navy); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--cream-deep);
+    padding:4.5rem 0 1.5rem;
+  }
+  footer h6{
+    font-family:'Fraunces',serif;
+    font-size:1.05rem;
+    color:var(--navy);
+    margin-bottom:1.1rem;
+    font-weight:600;
+  }
+  footer a.footer-link{
+    display:block; color:#5b5142; font-size:.9rem; margin-bottom:.65rem;
+  }
+  footer a.footer-link:hover{ color:var(--navy); }
+  .footer-bottom{
+    border-top:1px solid var(--line);
+    margin-top:3rem;
+    padding-top:1.5rem;
+    font-size:.82rem;
+    color:#8a7c63;
+  }
+  .social-circle{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--navy); color:var(--cream);
+    display:inline-flex;align-items:center;justify-content:center;
+    margin-right:.5rem;
+    transition:background .2s ease;
+  }
+  .social-circle:hover{ background:var(--teal-deep); color:var(--navy); }
+
+  @media (max-width: 767px){
+    .floating-cta{ right:14px; bottom:14px; }
+    .floating-cta .btn-pill{ padding:.6rem 1.3rem; font-size:.75rem; }
+    .hero{ padding:4.5rem 0 3.5rem; text-align:center; }
+    .hero p.lead{ margin-left:auto; margin-right:auto; }
+    .hero-badges{ justify-content:center; }
+    .hero-visual{ margin-top:2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="topbar">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap">
+    <span><i class="fa-solid fa-location-dot me-1"></i> Charleston, South Carolina</span>
+    <a href="#picks"><i class="fa-solid fa-star me-1"></i> See Our Top Picks</a>
+  </div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar navbar-expand-lg navbar-bakery sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#top">
+      <span class="brand-mark"><i class="fa-solid fa-bread-slice"></i></span>
+      Charleston Bakery Guide
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" style="border-color:rgba(251,243,227,.4);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#picks">Top Picks</a></li>
+        <li class="nav-item"><a class="nav-link" href="#more">More Bakeries</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tastes">What To Order</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tips">Insider Tips</a></li>
+        <li class="nav-item ms-lg-3">
+          <a class="btn-pill" href="#newsletter">Get The List</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <p class="eyebrow mb-3">A Local's Field Guide</p>
+        <h1 class="mb-4">Charleston's<br>Best Bakeries</h1>
+        <p class="lead">From tiny King Street queues to Cannonborough cupcake shops, we've mapped the bakeries locals actually go back for — starting with the cinnamon rolls and croissants worth setting an alarm for.</p>
+        <div class="d-flex gap-3 mt-4 flex-wrap">
+          <a href="#picks" class="btn-pill">See The Top Picks</a>
+          <a href="#more" class="btn-outline-pill" style="color:var(--cream); border-color:rgba(251,243,227,.5);">More To Explore</a>
+        </div>
+        <div class="hero-badges">
+          <div class="hero-badge"><strong>6</strong>Bakeries Featured</div>
+          <div class="hero-badge"><strong>100%</strong>Locally Owned</div>
+          <div class="hero-badge"><strong>2026</strong>Guide Updated</div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-visual">
+          <div class="tile"><i class="fa-solid fa-swirl"></i>Cinnamon Rolls</div>
+          <div class="tile"><i class="fa-solid fa-seedling"></i>Blueberry Muffins</div>
+          <div class="tile"><i class="fa-solid fa-cookie-bite"></i>Sourdough &amp; Loaves</div>
+          <div class="tile"><i class="fa-solid fa-cake-candles"></i>Cupcakes &amp; Cakes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WELCOME / INTRO ============ -->
+<section class="welcome-section">
+  <div class="container">
+    <p class="eyebrow">Welcome To</p>
+    <h2>The Charleston Bakery Guide</h2>
+    <p class="lead-text">We spent our mornings working through the Holy City's bakery scene so you don't have to guess where to go. This guide covers the spots worth the wait — from a tiny King Street bakeshop with a line out the door, to a King Street coffee shop whose cinnamon rolls and blueberry muffins have a following all their own.</p>
+    <a href="#picks" class="btn-outline-pill">Jump To Our Top Picks</a>
+    <div class="stat-row">
+      <div class="stat-item"><strong>King St.</strong><span>Bakery Corridor</span></div>
+      <div class="stat-item"><strong>West Ashley</strong><span>Worth The Drive</span></div>
+      <div class="stat-item"><strong>Cannonborough</strong><span>Cupcake Central</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOP PICKS ============ -->
+<section class="top-picks" id="picks">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Our Ranking</p>
+      <h2>The Top 3 Bakeries In Charleston</h2>
+    </div>
+    <div class="row g-4">
+
+      <!-- #1 Welton's -->
+      <div class="col-lg-4 col-md-6">
+        <div class="rank-card">
+          <div class="rank-media media-1">
+            <div class="rank-number">1</div>
+            <i class="fa-solid fa-wheat-awn" style="font-size:2.6rem;"></i>
+          </div>
+          <div class="rank-body">
+            <div class="rank-locale">Upper King Street</div>
+            <h3>Welton's Tiny Bakeshop</h3>
+            <p>Charleston's most talked-about bakery lives up to the name — a 956-square-foot shop turning out naturally leavened sourdough, flaky croissants, and seasonal kolaches. Expect a line, especially on weekends, and go early for the best selection.</p>
+            <div class="order-tags">
+              <span>Croissants</span><span>Sourdough</span><span>Kolaches</span>
+            </div>
+            <a class="rank-link" href="https://www.weltonstinybakeshop.com/" target="_blank" rel="noopener">Visit Welton's Tiny Bakeshop &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- #2 Sweet Palm -->
+      <div class="col-lg-4 col-md-6">
+        <div class="rank-card">
+          <div class="rank-media media-2">
+            <div class="rank-number">2</div>
+            <i class="fa-solid fa-mug-hot" style="font-size:2.6rem;"></i>
+          </div>
+          <div class="rank-body">
+            <div class="rank-locale">471 King Street</div>
+            <h3>Sweet Palm Coffee &amp; Food</h3>
+            <p>This King Street café earns its spot for two things above all: warm, generously glazed <strong>cinnamon rolls</strong> and tender <strong>blueberry muffins</strong> that sell out early. Grab one with a coffee and find a seat on King Street to watch the morning go by.</p>
+            <div class="order-tags">
+              <span>Cinnamon Rolls</span><span>Blueberry Muffins</span>
+            </div>
+            <a class="rank-link" href="#" target="_blank" rel="noopener">Visit Sweet Palm Coffee &amp; Food &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- #3 Sugar Bakeshop -->
+      <div class="col-lg-4 col-md-6">
+        <div class="rank-card">
+          <div class="rank-media media-3">
+            <div class="rank-number">3</div>
+            <i class="fa-solid fa-cake-candles" style="font-size:2.6rem;"></i>
+          </div>
+          <div class="rank-body">
+            <div class="rank-locale">Cannonborough-Elliottborough</div>
+            <h3>Sugar Bakeshop</h3>
+            <p>A neighborhood staple on Cannon Street since 2007, known for scratch-made cupcakes in a rotating lineup of flavors, plus saucer-sized oatmeal raisin cookies and the beloved "Charleston Chewies." Come before they sell out in the afternoon.</p>
+            <div class="order-tags">
+              <span>Cupcakes</span><span>Cookies</span><span>Charleston Chewies</span>
+            </div>
+            <a class="rank-link" href="https://www.sugarbakeshopchs.com/" target="_blank" rel="noopener">Visit Sugar Bakeshop &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ MORE BAKERIES ============ -->
+<section class="more-bakeries" id="more">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Worth The Trip</p>
+      <h2>A Few More Bakeries To Know</h2>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="more-card">
+          <div class="icon-badge"><i class="fa-solid fa-bread-slice"></i></div>
+          <div class="locale">West Ashley &middot; 1750 Savannah Hwy</div>
+          <h4>WildFlour Pastry</h4>
+          <p>A West Ashley favorite from pastry chef Lauren Mitterer, best known for Sticky Bun Sundays, cinnamon rolls locals line up for, and a rotating case of scones, quiches, and muffins.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="more-card">
+          <div class="icon-badge"><i class="fa-solid fa-champagne-glasses"></i></div>
+          <div class="locale">Downtown &middot; 90 Society Street</div>
+          <h4>Christophe Artisan Chocolatier-P&acirc;tissier</h4>
+          <p>A tiny French pâtisserie tucked off King Street, run by a third-generation Toulouse chocolatier. Come for the almond croissants and hand-painted chocolates, stay for the espresso.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="more-card">
+          <div class="icon-badge"><i class="fa-solid fa-mug-saucer"></i></div>
+          <div class="locale">French Quarter &middot; 160 E Bay Street</div>
+          <h4>Bakehouse Charleston</h4>
+          <p>A coffee-and-bakery combo on East Bay Street with a wide case of cakes, tarts, muffins, and brownie bars, plus custom cakes for special occasions.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT TO ORDER / GALLERY ============ -->
+<section class="gallery-section" id="tastes">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">The Menu Highlights</p>
+      <h2>What To Order Around Town</h2>
+    </div>
+    <div class="row g-3">
+      <div class="col-6 col-md-4 col-lg">
+        <div class="taste-tile t1"><i class="fa-solid fa-swirl"></i><span class="label">Cinnamon Rolls</span><small>Sweet Palm &amp; WildFlour</small></div>
+      </div>
+      <div class="col-6 col-md-4 col-lg">
+        <div class="taste-tile t2"><i class="fa-solid fa-seedling"></i><span class="label">Blueberry Muffins</span><small>Sweet Palm Coffee &amp; Food</small></div>
+      </div>
+      <div class="col-6 col-md-4 col-lg">
+        <div class="taste-tile t3"><i class="fa-solid fa-cookie-bite"></i><span class="label">Croissants</span><small>Welton's &amp; Christophe</small></div>
+      </div>
+      <div class="col-6 col-md-4 col-lg">
+        <div class="taste-tile t4"><i class="fa-solid fa-cake-candles"></i><span class="label">Cupcakes</span><small>Sugar Bakeshop</small></div>
+      </div>
+      <div class="col-6 col-md-4 col-lg">
+        <div class="taste-tile t5"><i class="fa-solid fa-bread-slice"></i><span class="label">Sourdough Loaves</span><small>Welton's Tiny Bakeshop</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSIDER TIPS ============ -->
+<section class="tips-section" id="tips">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Before You Go</p>
+      <h2>Insider Tips</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="tip-card">
+          <i class="fa-solid fa-quote-left"></i>
+          <h5>Go Early</h5>
+          <p>Small-batch bakeries like Welton's and WildFlour bake once and sell out — plan to arrive within the first hour or two of opening for the full case.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="tip-card">
+          <i class="fa-solid fa-quote-left"></i>
+          <h5>Cash &amp; Parking</h5>
+          <p>King Street spots fill up fast on weekend mornings. Metered street parking is common — bring a card or the parking app for the meter, and check hours before you go since several close by early afternoon.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="tip-card">
+          <i class="fa-solid fa-quote-left"></i>
+          <h5>Call Ahead For Orders</h5>
+          <p>Sugar Bakeshop and Sweet Palm both take phone orders for larger quantities — helpful if you're picking up cupcakes or a box of cinnamon rolls for a group.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletter-section" id="newsletter">
+  <div class="container">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-6">
+        <p class="eyebrow">Stay In The Loop</p>
+        <h2>Get New Bakery Finds First</h2>
+        <p class="lead-text mx-0" style="text-align:left;">Join the list for new additions to the guide, seasonal menu items, and the occasional line-skipping tip.</p>
+      </div>
+      <div class="col-lg-6">
+        <form class="newsletter-form d-flex ms-lg-auto" onsubmit="return false;">
+          <input type="email" class="form-control" placeholder="Your email address" required>
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <h6><i class="fa-solid fa-bread-slice me-2"></i>Charleston Bakery Guide</h6>
+        <p style="color:#5b5142; font-size:.9rem; max-width:280px;">An independent, locally curated guide to the best bakeries in Charleston, SC. Not affiliated with any bakery listed.</p>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h6>Guide</h6>
+        <a class="footer-link" href="#picks">Top Picks</a>
+        <a class="footer-link" href="#more">More Bakeries</a>
+        <a class="footer-link" href="#tastes">What To Order</a>
+        <a class="footer-link" href="#tips">Insider Tips</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6>Featured Bakeries</h6>
+        <a class="footer-link" href="https://www.weltonstinybakeshop.com/" target="_blank" rel="noopener">Welton's Tiny Bakeshop</a>
+        <a class="footer-link" href="#picks">Sweet Palm Coffee &amp; Food</a>
+        <a class="footer-link" href="https://www.sugarbakeshopchs.com/" target="_blank" rel="noopener">Sugar Bakeshop</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6>Follow Along</h6>
+        <a href="#" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-circle"><i class="fa-brands fa-pinterest-p"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom d-flex justify-content-between flex-wrap">
+      <span>&copy; 2026 Charleston Bakery Guide. All bakery names and locations belong to their respective owners.</span>
+      <span>Made with &hearts; in Charleston, SC</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTA -->
+<a href="#picks" class="floating-cta btn-pill">See Top Picks</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
